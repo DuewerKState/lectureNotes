@@ -48,28 +48,28 @@ AND:
 
 p q | p ∧ q
 ------------
-T T |
-T F |
-F T |
-F F |
+T T |   T
+T F |   F
+F T |   F
+F F |   F
 
 
 OR:
 
 p q | p ∨ q
 ------------
-T T |
-T F |
-F T |
-F F |
+T T |   T
+T F |   T
+F T |   T
+F F |   F
 
 
 NOT:
 
 p | ¬p
 -------
-T |
-F |
+T |  F
+F |  T
 
 ////////////////////////////////////////////////
 
@@ -83,14 +83,14 @@ q: I will study
 p → q
 
 It is false if we have BROKEN A PROMISE.
-Otherwise we have not.
+Otherwise it is true.
 
 p q | p → q
 ------------
-T T |
-T F |
-F T |
-F F |
+T T |   T   The promise was kept.
+T F |   F   The promise was broken.
+F T |   T   The first 'false' doesn't tell us anything about the second statement.
+F F |   T   The first 'false' doesn't tell us anything about the second statement.
 
 How does the implies operator relate to programming?
 
@@ -98,9 +98,13 @@ How does the implies operator relate to programming?
 
 Design circuit for:
 
-¬(p ∨ q)       (p NOR q)
+¬(p ∨ q)       (p NOR q) (using just AND, OR, NOT gates)
+                exclusive or
 
+                should be true when exactly one input is true
+                otherwise false
 
+(p OR q) AND NOT(p AND q)
 /////////////////////////////////////
 
 How would we evaluate the output of this circuit with
@@ -119,7 +123,6 @@ Consider ¬p ∧ q ∨ r.
 
 --> what operation do we do first?
 
-
 From highest (happens first) to lowest (happens last) precedence:
     (), ¬, ∧, ∨, →
 
@@ -128,7 +131,7 @@ From highest (happens first) to lowest (happens last) precedence:
 
 Given this statement:
 
-    ¬p ∧ q ∨ r
+    ((¬p) ∧ (q ∨ r))
 
 Add () to show the order of operations.
 
@@ -140,20 +143,25 @@ p is T
 q is F
 r is F
 
+ ((¬p) ∧ (q ∨ r))
 
+ F V (F)
+
+F
 
 ////////////////////////////////////////////////
 
+(4 - 1) - 2
 Order of operations
     ¬ evaluates right to left
-        ¬¬p is equivalent to....
+        ¬¬p is equivalent to....    (¬(¬p))
 
     ∧ and ∨ evaluate left to right
-        p ∧ q ∧ r is equivalent to....
-        p ∨ q ∨ r is equivalent to....
+        p ∧ q ∧ r is equivalent to....  ((p ∧ q) ∧ r)
+        p ∨ q ∨ r is equivalent to....  (p v q) v r
 
     → evaluates right to left
-        p → q → r is equivalent to....
+        p → q → r is equivalent to....  p → (q → r)
 
 
 
@@ -170,9 +178,11 @@ p ∧ q ∨ r ∧ p
 
 rewrite with ():
 
+(p ∧ q) ∨ (r ∧ p)
+
 top-level operator?
 
-
+^
 
 How is this similar to a circuit?
 
@@ -189,21 +199,21 @@ Definitions/examples
 contingent - the overall statements is true for
     some truth assignments and false for others
 
-Example?
+Example?    p ^ q
 
 
 
 contradictory - for all possible truth assignments,
     the overall statement is false
 
-Example?
+Example?    p ^ !p
 
 
 
 tautology - for all possible truth assignments,
     the overall statement is true
 
-Example?
+Example?    p v !p
 
 
 ////////////////////////////////////////
@@ -212,21 +222,21 @@ Write a truth table for:
 
 p ∨ q → p
 
-
+            *
 ----------------
 p q | p ∨ q → p
 ----------------
-T T |
-T F |
-F T |
-F F |
+T T |   T     T
+T F |   T     T
+F T |   T     F
+F F |   F     T
 ----------------
 
 
 --> how would we mark the top-level operator?
-
+The 'OR' (v) operator. You would read the table as (p v q) -> p
 --> how would we classify this truth table?
-
+Contingent; mostly true for all true statements.
 
 /////////////////////////////////////////
 
@@ -241,22 +251,42 @@ one truth assignment that makes the statement true
 
 
 - what kind of statement is satisfiable? what kind is not?
-
+    satisfiable: contingent, tautology
+    not satisfiable: contradictory
 
 - is this satisfiable? How would we show it?
 
         (p ∨ ¬q) ∧ (q ∨ ¬r) ∧ (r ∨ ¬p)
 
+        Need ONE truth assignment that makes it true.
+
+        p: T
+        q: T
+        r: T
 
 --> how would we show something was NOT satisfiable?
+
+        Would need full truth table and show statement is contradictory.
 
 /////////////////////////////////////////
 
 Logical equivalence.
 
+!(p ^ q)
+
+!p v !q
+
+DeMorgan's Law
+
 --> how to show two statements ARE equivalent?
 
+Truth tables.
+
+For every truth statement, both statements have the same output.
+
 --> how to show two statements are NOT equivalent?
+
+Just need ONE truth statement from a truth table that is different from the same truth statement of another truth table.
 
 ////////////////////////////////////////
 
@@ -264,8 +294,12 @@ Parse trees
 
 --> what are they?
 
+Think of AVL trees. It has a similar concept.
+
 --> draw one for (p ∧ q) → ¬r
 
+Operators are at the top, variables are at the bottom.
+When drawing, place lowest-precedence operators higher in the tree and highest-precedence operators lower in the tree.
 
 --> how do they relate to programming?
 
