@@ -1,1 +1,55 @@
 //p ∨ (q ∧ r)     is equivalent to       (p ∨ q) ∧ (p ∨ r)
+
+//first direction
+/*
+p V (q ^ r) |- (p V q) ^ (p V r)
+{
+    1. p V (q ^ r)              premise
+    2. {
+        3. p                    assume
+        4. p V q                Vi1 3
+        5. p V r                Vi1 3
+        6. (p V q) ^ (p V r)    ^i 4 5
+    }
+    //other sub-proof: assume q ^ r
+    7. {
+        8. q ^ r                assume
+        9. q                    ^e1 8
+        10. r                   ^e2 8
+        11. p V q               Vi2 9
+        12. p V r               Vi2 10
+        13. (p V q) ^ (p V r) ^i 11 12
+        //Goal: (p V q) ^ (p V r)
+    }
+    14. (p V q) ^ (p V r)       Ve 1 2 7
+}
+*/
+
+//second direction
+(p V q) ^ (p V r) |- p V (q ^ r)
+{
+    1. (p V q) ^ (p V r)        premise
+    2. p V q                    ^e1 1
+    3. p V r                    ^e2 1
+    4. {
+        5. p                    assume
+        6. p V (q ^ r)          Vi1 5
+        //Goal: p V (q ^ r)
+    }
+    //sub-proof: assume q
+    7. {
+        8. q                    assume
+        9. {
+            10. p               assume
+            11. p V (q ^ r)     Vi1 10
+        }
+        12. {
+            13. r               assume
+            14. q ^ r           ^i 8 13
+            15. p V (q ^ r)     Vi2 14
+        }
+        //Goal: p V (q ^ r)
+        16. p V (q ^ r)         Ve 3 9 12
+    }
+    17. p V (q ^ r)             Ve 2 4 7
+}

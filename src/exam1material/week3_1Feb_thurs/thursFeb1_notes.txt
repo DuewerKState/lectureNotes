@@ -25,6 +25,7 @@ Today:
 
 Want to prove a conclusion logically follows from
 a set of premises.
+    Every single time all the premises were true, then the conclusion was also true.
 
 ...could use truth tables
 
@@ -78,7 +79,7 @@ AND rules idea.
 
    --> in what situations do you think we could do that?
 
-
+If I already had P and Q separately.
 
 
 
@@ -86,7 +87,8 @@ AND rules idea.
 
     --> what new claims would make sense using that statement?
 
-
+P
+Q
 
     --> what happened to the AND operator in both cases?
 
@@ -136,7 +138,7 @@ and also:
 
 What could we claim with  ∧i?
 
-
+(a v !b) ^ (c -> d)
 
 //////////////////////////////////
 
@@ -179,8 +181,13 @@ Example:
 Given premises:  a ∧ b, c
 Use natural deduction to prove: b ∧ c
 
-
-
+a ^ b, c |- b ^ c
+{
+    1. a ^ b        premise
+    2. c            premise
+    3. b            ^e2 1
+    4. b ^ c        ^i 3 2
+}
 
 /////////////////////////////////
 
@@ -205,7 +212,14 @@ p ∧ q ∧ r ⊢ q
 
 Prove that ∧ is commutative:
 
-
+(operates the same in either direction)
+p ^ q |- q ^ p
+{
+    1. p ^ q        premise
+    2. p            ^e1 1
+    3. q            ^e2 1
+    4. q ^ p        ^i 3 2
+}
 
 ////////////////////////////////
 
@@ -242,7 +256,8 @@ Or, could have done:
 p ∧ q ⊢ p ∨ q
 {
     1. p ∧ q            premise
-
+    2. p                ^e1 1
+    3. p v q            vi1 2
 }
 
 
@@ -254,12 +269,18 @@ OR elimination
 Idea:
 - If an OR statement is true, what do we know?
 
+p v q
 
+p is true
+or, q is true
+(or both)
 
 
 - What if we can reach the same conclusion no matter which side
     of the OR is true?
 
+assume p is true -> reach conclusion
+assume q is true -> reach the same conclusion
 
 Rule summary:
 
@@ -285,7 +306,7 @@ else {
     some result
 }
 
---> what do we know is true here?
+--> what do we know is true here? some result
 
 
 ///////////////////////////////
@@ -317,6 +338,9 @@ Do you think we could prove:
 
 p ∨ q ⊢ p ∧ q
 
+Invalid
+
+Only need 1 truth assignment where the premise(s) is true but the conclusion is false.
 
 
 ////////////////////////////////
@@ -328,12 +352,13 @@ Proving equivalence.
     e.g., DeMorgan's laws:
     ¬(p ∨ q) is equivalent to ¬p ∧ ¬q
 
-
+Made two truth tables.
+Made sure that both statements had same output for every single truth assignment.
 
 
 --> how do we do it with proofs?
 
-
+Use two proofs, take turns swapping premises/conclusions to check.
 
 
 ////////////////////////////////
@@ -370,6 +395,9 @@ Express conditions in proposition logic:
 
 Equivalent to:
 
+if (extraCredit == true || (grade >= 80 && grade <= 90)) {
+    //do stuff
+}
 
 --> what is an equivalent, simpler if-statement?
 
