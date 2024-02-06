@@ -33,6 +33,8 @@ p, q, r ⊢ p ∧ q ∨ r
     1. p            premise
     2. q            premise
     3. r            premise
+    4. q ^ r        ^i 1 2
+    5. p V q ^ r    Vi 1 4
 
     //what now?
 }
@@ -42,7 +44,7 @@ p, q, r ⊢ p ∧ q ∨ r
 Implies-elimination, →e
 
       P, P → Q
-→e: -----------
+→e: -----------     //If we have P, we can guarentee Q
         Q
 
 
@@ -137,27 +139,34 @@ Covers everything we've done up to this point:
         make both true)
     two natural deduction proofs (one as premise, one as conclusion
         - both ways)
+        My Notes:
+        One way: Fill out 2 truth tables. Show that for each truth assignment, both statements have the same output.
+        Another way: Natural deduction. Do to proofs; one as premise, one as conclusion. Then do it again, but switch the premise and conclusion.
 
 - Prove propositional logic statements are NOT equivalent
     how?
 
-    just need one truth assignment where the two statements
+    just need one counterexample (truth assignment) where the two statements
     have different outputs
 
 - DeMorgan's laws on propositional logic (and their application)
     (like the HW)
+    NOT (p AND q)   ==  NOT p OR NOT q
+    NOT (p OR q)    ==  NOT p AND NOT q
 
 - Satisfiability: whether there is at least one truth assignment
     that makes the statement true
 
     how prove satisfiable?
-        just need one truth assignment that makes statement true
+        just need ONE truth assignment that makes statement true.
+        (or show truth table is tautology or contingent)
 
     how prove not satisfiable?
         need full truth table, show all truth assignments
         make statement false (i.e., contradictory)
 
 - Translating between English and propositional logic
+
 
 - Arguments (premises and a proposed conclusion)
 
@@ -175,6 +184,8 @@ Covers everything we've done up to this point:
     truth table for every premise and for the conclusion
     find the set of truth assignments that made EVERY premise true
         make sure that those truth assignments made the conclusion true
+
+    If I  can do this, is a valid argument.
 
 - Natural deduction proofs in propositional logic using the
     AND, OR, and IMPLIES rules
