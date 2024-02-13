@@ -99,7 +99,7 @@ Syntax:
 
 a. p            (some justification)
 b. ¬p           (some justification)
-c. ⊥            ¬e a b
+c. ⊥            ¬e a b (First letter is the 'true' statement, second letter is the 'opposite' statement.)
 
 
 ///
@@ -133,14 +133,24 @@ p → q, ¬q ⊢ ¬p
 {
     1. p → q            premise
     2. ¬q               premise
-
+    3. {
+        4. p            assume
+        5. q            ->e 1 4
+        6. _|_          !e 5 2
+        //Goal: _|_
+    }
 }
 
 
 p ⊢ ¬¬ p
 {
     1. p            premise
-
+    2. {
+        3. !p       assume
+        4. _|_      !e 1 3
+        //Goal: _|_
+    }
+    5. !!p          !i 2
 }
 
 
