@@ -1,5 +1,31 @@
 ¬(¬p ∨ ¬q) ⊢ p ∧ q
 {
     1. ¬(¬p ∨ ¬q)           premise
+    /*
+    //Note: This strategy doesn't work or go anywhere.
+    2. {
+        3. ! (p ^ q)        assume
+        //Goal: Hope we get a _|_
+    }
 
+    //Think of p, q as two separate proofs
+    //Try to prove p with pbc
+    */
+
+    2. { //Goal: pbc
+        3. !p           assume
+        // !p V !q would contradict with our premise !(!p V !q)
+        4. !p V !q      Vi1 3 //Could also technically state '!p V q', but it would help us with this proof.
+        5. _|_          !e 4 1
+        //Goal: _|_
+    }
+    6. p                pbc 2
+    7. { //Goal: use pbc to get q
+        8. !q           assume
+        9. !p V !q      Vi2 8
+        10. _|_         !e 9 1
+        //Goal: _|_
+    }
+    11. q               pbc 7
+    12. p ^ q           ^i 6 11
 }

@@ -1,4 +1,32 @@
 ⊢ p ∨ ¬p
 {
+    //Must start with sub-proofs
+    //pbc, !i, Ve, ->i
+    /*
+    1. {
+        2. p        assume
+        ...
+    }
+    3. {
+        4. !p       assume
+    }
+    5. statement    Ve
 
+    //Doing this won't work because there is no 'or' statement premise to eliminate.
+    */
+
+    1. { //use pbc to get p V !p
+        2. !(p V !p)        assume
+        //If I had p V !p, it would contradict.
+        3. { //use pbc to get !p
+            4. p            assume
+            5. p V !p       Vi1 4
+            6. _|_          !e 5 2
+        }
+        7. !p               !i 3
+        8. p V !p           Vi2 7
+        9. _|_              !e 8 2
+        //Goal: _|_
+    }
+    10. p V !p              pbc 1
 }

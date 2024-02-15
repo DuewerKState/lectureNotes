@@ -25,10 +25,11 @@ if (condition) {
 
 What do we know if "condition" is true?
 
+    statement
 
 What do we know if "statement" is NOT true?
 
-
+    condition couldn't have happened
 
 
 
@@ -57,15 +58,34 @@ pbc:  ----------
 First examples.
 
 p, ¬p ⊢ q
-
+{
+    1. p                premise
+    2. !p               premise
+    3. _|_              !e 1 2
+    4. q                _|_e 3 (Can be any statement I want/need because of the contradiction.)
+}
 
     //how does this make logical sense?
+    Trying to show that any time all the premises are true,
+    then the conclusion is also true.
 
+    Ex) F -> T
 
 p ∨ q, ¬p ⊢ q
 {
     1. p ∨ q            premise
-
+    2. !p               premise
+    3. { //Want: Ve
+        4. p            assume
+        5. _|_          !e 4 2
+        6. q            _|_e 5 (Can be any statement I want/need because of the contradiction.)
+        //Goal: q
+    }
+    7. {
+        8. q            assume
+        //Our goal was q, we're already there
+    }
+    9. q                Ve 1 3 7
 }
 
 
@@ -73,10 +93,15 @@ p ∨ q, ¬p ⊢ q
 ¬¬p ⊢ p
 {
     1. ¬¬p          premise
-
+    2. {
+        3. !p       assume
+        4. _|_      !e 3 1
+        //Goal: _|_
+    } //Goal: p with pbc
+    5. p            pbc 2
 }
 
-
+Note: pbc == proof by contradiction
 
 
 ///////////////////////////////////
@@ -125,14 +150,22 @@ How do we approach proofs?
 2. Extract all information from premises (∧e, →e)
 3. Look at what you are trying to prove (find its top level operator)
 
-    ∧ -
+    ∧ - Think of it as two separate proofs. Prove the LHS of the goal ^, then prove the RHS, then use ^i to make the conclusion.
 
-    ∨ -
-    → -
+    ∨ - No real pattern. Think - can you prove ONE side of the goal OR? If so, do that and use V1.
+        See if you have an OR statement already - use Ve
+        Last resort: Use pbc (assume conclusion is not true, to get _|_)
+
+    → - Follow ->i pattern. Sub-proof, assume LHS of your goal ->, try to get the RHS of your goal implies.
+        !(something) - Follow !i pattern. Sub-proof, assume "something", try to get a _|_.
+
     ¬(something) -
 
     just a propositional atom?
-
+        Look for where that atom IS in your premises.
+            prove p
+            premises: w -> p (would want to prove w to get p)
+        Is there a _|_ among the premises? If so, use _|_ to conclude whatever you want/need.
 
 
 After each claim - see what we can extract that is new.
@@ -149,8 +182,17 @@ Doesn't fit a pattern or doesn't work out from above:
 
 
 --> when do we open a subproof?
+
+    Ve, ->i, !i, pbc
+    Make a note of which one you are using when you open a sub-proof.
+
 --> what is the first justification?
+
+    assume
+
 --> can we assume anything?
+
+    yes
 
 /////////////////////////////////
 
