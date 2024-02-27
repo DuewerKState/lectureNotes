@@ -22,19 +22,33 @@ Quantifiers - helps describe all or some elements in a set
 
 ∀ x ∈ B  means... For all x in B
 
-∃ x ∈ B  means... There exists x in B
+∃ x ∈ B  means... There exists an x in B
+
+
 
 //////////////////////////////////////
 
 What do we know if A - B = A?
+    the intersection between A and B is empty
 
-- Set difference
-Start with A, remove everything that is also in B
+
+- set difference
+start with A, remove everything that is also in B
+
+
 
 
 What do we know if A - B = B - A?
 
-A and B are both empty sets.
+A = B
+
+A-B = B-A = empty set
+
+
+
+
+
+
 
 ////////////////////////////////////////
 
@@ -44,6 +58,7 @@ A ⋃ B = {x : x ∈ A ⋁ x ∈ B}
     union
     set of all x such that x is in A or x is in B
 
+
 A ⋂ B = {x : x ∈ A ⋀ x ∈ B}
     intersection
     set of all x such that x is in A and x is in B
@@ -51,26 +66,34 @@ A ⋂ B = {x : x ∈ A ⋀ x ∈ B}
 A - B = {x : x ∈ A ⋀ x ∉ B}
     difference
     set of all x such that x is in A and x is not in B
+
+
+
 //////////////////////////////////////
 
-How to prove A ⊆ B?
+How to prove A ⊆ B? (A is a subset of B)
    ∀ k (k ∈ A → k ∈ B)
 
     (What does this mean?)
-    If an element is in A, then it is also in B
-    All elements in A are also in B
+    if an element is in A, then it is also in B
+    all element in A are also in B
+
 
 --> How would we prove an implies statement with natural deduction?
-    Assume LHS, try to get RHS
+
+    assume LHS, try to get to RHS
 
     Let x be an element in A. Prove that it is also in B.
 
+
 --> How would we prove that A = B? A ⊆ B and B ⊆ A
-    Let x be an element in A. We must show that it is also in B.
+
+    let x be an element in A. We must show that it is also in B.
         ...
 
     Let y be an element in B. We must show that it is also in A.
         ...
+
 
 ///////////////////////////////////
 
@@ -80,21 +103,35 @@ Sketch proof of a distributive law on sets:
     or: union
 
 A ⋃ (B ⋂ C) = (A ⋃ B) ⋂ (A ⋃ C)
-    Let x be an element in A ⋃ (B ⋂ C). We must show that x is an element in (A ⋃ B) ⋂ (A ⋃ C).
 
-    Since x is in A ⋃ (B ⋂ C), we know that x is in A or x is in B ⋂ C.
-    First, suppose x is in A. Then x is also in A ⋃ B and A ⋃ C.
-    Since it is in both A ⋃ B and A ⋃ C, it is also in their intersection -- (A ⋃ B) ⋂ (A ⋃ C).
 
-    Suppose instead that x is in B ⋂ C. This tells us that x is in B and x is in C.
-    Since x is in B, it is also in A ⋃ B. Since x is in C, it is also in A ⋃ C.
-
-    To finish the proof, ...
 
 We must show that:
     A ⋃ (B ⋂ C) ⊆ (A ⋃ B) ⋂ (A ⋃ C)
 and that
     (A ⋃ B) ⋂ (A ⋃ C) ⊆ A ⋃ (B ⋂ C).
+
+
+
+A ⋃ (B ⋂ C) ⊆ (A ⋃ B) ⋂ (A ⋃ C).
+
+Let x be an element in A ⋃ (B ⋂ C). We must show that x is
+an element in (A ⋃ B) ⋂ (A ⋃ C).
+
+Since x is in A ⋃ (B ⋂ C), we know that x is in A or x is in
+B ⋂ C. First, suppose x is in A. Then x is also in A ⋃ B and
+A ⋃ C. Since it is in both A ⋃ B and A ⋃ C, it is also in
+their intersection -- (A ⋃ B) ⋂ (A ⋃ C).
+
+Suppose instead that x is in x is in B ⋂ C. This tells us that
+x is in B and x is in C. Since x is in B, it is also in A ⋃ B.
+Since x is in C, it is also in A ⋃ C. Since it is in both
+A ⋃ B and A ⋃ C, it is also in their intersection --
+(A ⋃ B) ⋂ (A ⋃ C).
+
+
+To finish the proof, we must go the other direction and show
+(A ⋃ B) ⋂ (A ⋃ C) ⊆ A ⋃ (B ⋂ C).
 
 
 //////////////////////////////////////
@@ -103,32 +140,38 @@ Another example of a proof about sets.
 
 Example:
 
-    A = {x : x = 4n, n ∈ ℤ} (x is in multiples of 4)
-    B = {x : x = 2k, k ∈ ℤ} (x is in multiples of 2 or x is in even numbers)
+    A = {x : x = 4n, n ∈ ℤ} (multiples of 4)
+    B = {x : x = 2k, k ∈ ℤ} (even numbers)
 
 Prove A ⊆ B.
 
 Let x be an element in A. We must show that x is also in B.
 Since x is in A, then x = 4n for some integer n.
-We have x = 2(2n) = 2k where k is in the integer 2n.
-This proves that x is in B.
+We have that x = 2(2n) = 2k where k is the integer 2n.
+Thus x is in B.
 
-Want: x = 2k for some integer k (would mean in B)
+
+
+
 
 /////////////////////////////////
 
-A = {x : x = 4n, n ∈ ℤ} (x is in multiples of 4)
+A = {x : x = 4n, n ∈ ℤ} (all multiples of 4)
 --> What if B = {x : x = 2k-6, k ∈ ℤ}? Is A ⊆ B?
 
+
 Let x be an element in A. We must show that x is also in B.
-Since x is in A, x = n for some integer n. We have that:
-    x = 4n
-      = 2(2n + 3) - 6
-      = 2k - 6
+Since x is in A, x = 4n for some integer n. We have that:
+     x = 4n
+        = 2(2n + 3) - 6
+        = 2k - 6
 
-Where k is the integer 2n+3. This proves that x is in B.
+where k is the integer 2n+3. Thus x is in B.
 
-Want: x = 2k - 6
+
+
+
+want: x = 2k - 6
         = 2(...) - 6
 
 
@@ -157,35 +200,38 @@ A = {x : x ∈ ℕ ⋀ x^2 ≥ 25 }
 
 P(x) = x ∈ ℕ ⋀ x^2 ≥ 25
 
-P(2) = 2 ∈ ℕ ⋀ 2^2 ≥ 25 (this statement is false; 2^2 isn't ≥ 25)
-P(-6) = -6 ∈ ℕ ⋀ (-6)^2 ≥ 25 (this statement is false; -6 is not a natural number)
-P(10) = 10 ∈ ℕ ⋀ 10^2 ≥ 25 (this statement is true)
+P(2) = 2 ∈ ℕ ⋀ 2^2 ≥ 25 (this statement is false)
+P(-6) = -6 ∈ ℕ ⋀ (-6)^2 ≥ 25 (false - -6 is not a natural number)
+P(10) = 10 ∈ ℕ ⋀ (10)^2 ≥ 25 (true)
 
 Is 2 in A? Is -6? Is 10?
-Only 10 is in A.
+
+2 and -6 are not in A
+10 is in A
 
 //////////////////////////////////////
 
 Limitations of propositional logic:
 
 Premises:
-All humans are mortal.
-Socrates is human.
+    All humans are mortal.
+    Socrates is human.
 
 Conclusion
-Therefore, Socrates is mortal.
+    Therefore, Socrates is mortal.
+
 
 
 How would we prove this in propositional logic?
 
-What are the propositional atoms?
+What propositional atoms?
 
-p: All humans are mortal
+p: all humans are mortal
 q: Socrates is a human
 r: Socrates is mortal
 
-p, q ⊢ r
 
+p, q |- r
 
 
 
@@ -233,13 +279,15 @@ Peel(x): x has a peel (that needs to be removed before eating)
 Seeds(x): x contains inedible seeds
 Bite(x): f is bite-sized
 
-Write each statement in English. Is each one true or false?
-
 Berry(strawberry) - true
 Citrus(strawberry) - false
 Peel(strawberry) - false
 Seeds(strawberry) - false
 Bite(strawberry) - true
+
+
+
+Write each statement in English. Is each one true or false?
 
 ∀ x (Berry(x))
 
@@ -248,11 +296,12 @@ Bite(strawberry) - true
 
 All fruits in my domain are berries
 
-false - bananas are not berries
+false - banana is not a berry
 
 {strawberry, blueberry, banana, orange, grapefruit, apple}
 
-Berry(strawberry) ^ Berry(blueberry) ^ Berry(banana) ^ Berry(orange) ^ Berry(grapefruit) ^ Berry(apple)
+Berry(strawberry) ^ Berry(blueberry) ^ ... ^ Berry(apple)
+
 
 ///
 
@@ -261,11 +310,13 @@ Berry(strawberry) ^ Berry(blueberry) ^ Berry(banana) ^ Berry(orange) ^ Berry(gra
     --> how could we express the same statement in our domain
     WITHOUT a quantifier?
 
-There is a fruit that is a citrus and has inedible seeds.
+There is a fruit that is citrus and has inedible seeds.
 
-True - an orange is a citrus and has inedible seeds.
+True - an orange is citrus and has inedible seeds
 
-(Citrus(strawberry) ^ Seeds(strawberry)) V (Citrus(orange) ^ Seeds(orange)) V ... V ... V ... V ...
+(Citrus(strawberry) ^ Seeds(strawberry)) V
+    (Citrus(orange) ^ Seeds(orange))
+    V ... all the other ondes
 
 ///
 
@@ -273,16 +324,17 @@ True - an orange is a citrus and has inedible seeds.
 
 All fruits are berries and are bite-sized.
 
-False - oranges are not bite sized
-        oranges are not berries
+No - oranges are not bite sized
+    oranges are not berries
+
 
 ///
 
 ∀ x (Berry(x) → Bite(x))
 
-All fruits that are berries are bite sized.
+All berries are bite sized.
 
-True - strawberries and blueberries are bite sized.
+True - strawberries and blueberries are bite-sized.
 
 ///
 
@@ -290,9 +342,10 @@ True - strawberries and blueberries are bite sized.
 
 Can you think of another way to write the same thing?
 
-!(Peel(strawberry) ^ Peel(blueberry) ^ ... ^ Peel(apple))
+!(Peel(strawberry) ^ Peel(blueberry) ^ ... ^ Peel(orange))
 
-!Peel(strawberry) V !Peel(blueberry) V ... V !Peel(apple)   (Demorgan's Law of the original statement)
+!Peel(strawberry) V !Peel(blueberry) V ... V !Peel(orange)
+
 
 There is a fruit you cannot peel.
     ∃ x !Peel(x)
@@ -300,50 +353,79 @@ There is a fruit you cannot peel.
 Not all fruits are peelable.
 
 
+∃ x !Peel(x) and ¬(∀ x Peel(x)) are equivalent
+
+
 ///
 
 ¬(∀ x (Seeds(x) → Citrus(x)))
 
+Not all fruits with seeds are citrus.
+    true - an apple has inedible seeds and is not citrus
+
+There is a fruit with inedible seeds that is not citrus
+    ∃ x (Seeds(x) ^ !Citrus(x))
 
 Can you think of another way to write the same thing?
-
-Not all fruits with seeds are citrus.
-    True - an apple has inedible seeds and is not a citrus.
-
-...
 
 ///
 
 ∀ x ¬Peel(x)
 
+All fruits don't have a peel
+
+There does not exist a fruit with a peel
+
+!(∃ x Peel(x))
 
 
 ///
 
 ¬(∃ x Berry(x))
 
+There does not exist a fruit that is a berry
+
 
 ///
 
 ¬(∃ x (Peel(x) ⋀ Citrus(x)))
+
+There does not exist a fruit that has a peel and is citrus
 
 
 ///
 
 ∃ x ¬(Peel(x) ⋀ Seeds(x))
 
+There exists a fruit that doesn't have both a peel and seeds.
+
 
 ///
 
 ∃ x (Citrus(x) → Berry(x))
 
+There is a fruit and if that fruit is citrus then it is a berry.
 
+(Citrus(strawberry) -> Berry(strawberry)) V
+    (Citrus(banana) -> Berry(banana)) V ...
+
+This would be true if Citrus(x) was false for ANY fruit.
+
+
+we probably wanted to say: ∃ x (Citrus(x) ^ Berry(x))
+
+(There is a fruit that is citrus and a berry)
 
 /////////////////
 
 For all: usually connect with ->
 
 There exists: usually connect with ^
+
+
+//////////////////
+
+<--- stopped here, will continue on Tuesday, February 27
 
 
 /////////////////
@@ -408,23 +490,16 @@ The difference of two positive integers is not necessarily positive
 
 Writing specifications using predicate logic
 
-Domain: {x : x is a user input number}
-
-
-
 
 Want to specify: individual "min" is the minimum user input element
 
 
 
-Want to specify that the array nums is sorted
+Want to specify that an is sorted
 
 
 Want to specify that every element in nums has been updated
     to be the absolute value of the original element
-
-    (use "nums_in" to denote the original array, and "nums"
-    to mean the final array)
 
 
 //////////////////////////////
