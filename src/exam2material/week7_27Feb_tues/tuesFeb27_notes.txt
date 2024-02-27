@@ -50,11 +50,19 @@ What do these mean in English? Are they true?
 
 ∀ n ∃ m (n^2 < m)
 
+    The square of all integers is less than some other integer.
 
+    True. Take each square, add 1 -- that's an integer that's bigger.
 
 ∀ x ∃ y (x == y^2)
 
+    All integers equal another integer's square
 
+    Every integer is a perfect square.
+
+    No. Some integers are perfect squares, but some are not.
+
+    Counterexample: x = 7
 
 /////////////////////////
 
@@ -107,8 +115,8 @@ How might we read these two statements?
 
 
 
-¬(∀ x P(x)) is equivalent to...?
-∃ x (¬P(x)) is equivalent to...?
+¬(∀ x P(x)) is equivalent to... not all x are P(x)
+∃ x (¬P(x)) is equivalent to... there is an x that is not P(x)
 
 What is the idea of this proof? same idea, but other DeMorgan's law
 
