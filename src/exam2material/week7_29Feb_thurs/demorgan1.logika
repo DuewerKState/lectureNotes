@@ -25,3 +25,23 @@
 //prove second direction
 //Get notes from merging later
 ¬(∃ x P(x)) |- ∀ x ¬P(x)
+{
+    1. ¬(∃ x P(x))              premise
+
+    //use Ai to prove ∀ x ¬P(x)
+    2. {
+        3. random
+
+        //use !i to prove !P(random)
+        4. {
+            5. P(random)        assume
+            6. ∃ x P(x)         Ei 5 random
+            7. _|_              !e 6 1
+            //want: _|_
+        }
+        8. !P(random)           !i 4
+
+        //want: !P(random)
+    }
+    9. ∀ x ¬P(x)                Ai 2
+}
