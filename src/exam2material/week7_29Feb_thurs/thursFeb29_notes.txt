@@ -28,9 +28,10 @@ What does that tell us about A and B?
 
 
 7 (a). If A ⋃ C = B ⋃ C, must A = B?
+    not necessarily
 
 7 (b). If A ⋂ C = B ⋂ C, must A = B?
-
+    note necessarily
 
 
 
