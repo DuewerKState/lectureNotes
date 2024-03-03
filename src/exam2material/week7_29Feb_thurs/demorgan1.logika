@@ -9,7 +9,7 @@
     //want to prove a ! statement
     //Use !i
     2. {
-        3. E x P(x)             assume
+        3. E x P(x)             assumes
         4. {
             5. alias P(alias)   assume
             6. !P(alias)        Ae 1 alias
