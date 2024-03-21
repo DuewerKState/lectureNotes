@@ -1,5 +1,17 @@
 ∀ x (∀ y P(x, y)) ⊢ ∀ y (∀ x P(x, y))
 {
     1. ∀ x (∀ y P(x, y))            premise
-
+    2. { //!Ai, we want the Ay
+        3. a                        //name a random individual/thing
+        4. { //Ai, we want Ax
+            5. b                    //name a random individual/thing
+            6. A y P(b, y)          Ae 1 b
+            7. P(b, a)              Ae 6 a
+            //Goal: P(b, a)
+        }
+        8. A x P(x, a)              Ai 4
+        //Goal: A x P(x, a)
+    }
+    9. A y (A x P(x, y))            Ai 2
+    //Final Goal: A y (A x P(x, y))
 }

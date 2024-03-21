@@ -1,5 +1,17 @@
 ∃ y (∀ x P(x, y)) ⊢ ∀ x (∃ y P(x, y))
 {
     1. ∃ y (∀ x P(x, y))            premise
-
+    2. { //Use Ai
+        3. a                        //assume a random individual/thing
+        4. { //Use Ee on #1
+            5. b A x P(x, b)        assume
+            6. P(a, b)              Ae 5 a
+            7. E y P(a, y)          Ei 6 b
+            //Goal: E y P(a, y)
+        }
+        8. E y P(a, y)              Ee 1 4
+        //Goal: E y P(a, y)
+    }
+    9. A x (E y P(x, y))            Ai 2
+    //Final Goal: A x (E y P(x, y))
 }
