@@ -23,8 +23,9 @@ The induction domino effect:
 
 What is this saying?
 
-P(1):
-∀ k (P(k) → P(k+1)):
+P(1): base case. Prove the claim for the first value in our domain (usually n = 1)
+∀ k (P(k) → P(k+1)): for all k, if P(k) holds then P(k+1) holds.
+Sub-proof, introduce random individual/thing. Assume P holds for our random individual/thing, prove P holds for the next individual.
 
 
 How does this motivate our induction proofs?
