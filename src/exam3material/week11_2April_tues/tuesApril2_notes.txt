@@ -1,14 +1,28 @@
 HW 8 due tonight
 
 Use proof by contradiction to prove that the sum of a rational and
-irrational number is irrational.
+irrational number is irrational. (For HW 8 Question 5)
 
 How to write as an IF/THEN?
 
+    IF we have a number that's rational and another number that's irrational,
+    THEN their sum is irrational.
 
+Rational: we can write p/q ...
 
 How to start the proof?
 
+    Let r be a rational number and i be an irrational number. Assume, for the sake of contradiction,
+    that the r+i is not irrational -- that is, assume r+i is rational.
+
+    (now use the rational definition to write r and r+i as a ratio)
+
+    Consider:
+    i = (r+i) - r
+      = fraction - fraction
+      = something/common denom
+
+Then i is rational, so we have a contradiction.
 
 HW 9 will be posted later today
 
@@ -83,7 +97,7 @@ assert statements
 
 How are Logika asserts different from C# (and other languages)?
 
-
+Used to validate code.
 
 
 
@@ -274,8 +288,10 @@ l"""{
     3. another == 5 - (x+2)*3   premise
 
     //substitute in for "num" in "answer"
+    4. answer == 4*(x+2) + 8    subst1 1 2
 
     //substitute in for "x+2" in "another"
+    5. another == 5 - (num)*3   subst2 1 3
 }"""
 
 
