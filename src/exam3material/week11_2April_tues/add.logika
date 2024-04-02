@@ -5,20 +5,19 @@ val x: Z = 2
 //what can we put in a logic block here? Do we need this step?
     //no, could have just said x == 2 in the block after setting y
 
-l"""{ // This block isn't needed for the proof, but is present as a demonstration. Not needed because 'x==2' can be done in the other block.
-    1. x == 2               premise
-
-}"""
 
 val y: Z = x + 2
 
 l"""{
     1. y == x + 2           premise
     2. x == 2               premise
-    3. y == 4               algebra 1 2 //Order for this justification doesn't matter
+    3. y == 4               algebra 2 1
+    4. y == 4 ^ x == 2      ^i 3 2
 }"""
 
-assert(y == 4)
+
+assert(y == 4 & x == 2)
+
 
 //what can we put in a logic block here?
 
