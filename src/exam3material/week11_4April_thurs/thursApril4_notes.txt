@@ -17,25 +17,30 @@ Finish swap.logika example
 Programs with division.
 
 
-Recall: what is the only numerical type in our toy programs?
+Recall: what is the only numerical type in our toy programs? int (Z)
 
 --> what does that mean about division?
 
-
+    7/4 is 1
 
 
 
 --> what do you think we'll need to demonstrate before using division?
 
-
+Make sure that the denominator isn't 0 (don't divide by zero).
 
 //what should go here?
 
+l"""{
+    1. b != 0       justification
+}"""
 
+x = a / b
 
-x = a / 2
-
-
+l"""{
+    1. 2 != 0       algebra (don't need to specify the algebra for cases such as this)
+}""
+y = a / 2
 
 --> consider this snippet:
 
@@ -43,16 +48,16 @@ x = a / 2
 val a: Z = num / 3
 val b: Z = num*3
 
-suppose num is 16, then a would be ?
+suppose num is 16, then a would be? 5
 
-b would be?
+b would be? 48
 
 l"""{
     1. a == num/3               premise
-    2. a*3 == num               algebra 1           //is this true?
+    2. a*3 == num               algebra 1           //is this true? //NO. a*3 = 15 and num is 16
 
     3. b == num*3               premise
-    4. b/3 == num               algebra 3           //is this true?
+    4. b/3 == num               algebra 3           //is this true? //YES. b is initialized to ba a multiple of 3, so this is fine.
 }"""
 
 
@@ -70,14 +75,19 @@ numerator % denominator
 
 --> what does that mean we'll need to demonstrate before using modulo?
 
-
+numerator >= 0
+denominator > 0
 
 
 //what should go here?
 
+
+l"""{
+    1. a >= 0       justification
+    2. 2 > 0        algebra
+}"""
+
 x = a % 2
-
-
 
 
 
@@ -86,11 +96,11 @@ x = a % 2
 val test: Z = num/3
 
 //maybe num is 16
-//test = ??
+//test = ?? 5
 
 l"""{
     1. test == num/3                premise
-    2. num == 3*test + num%3        algebra 1   //is this true?
+    2. num == 3*test + num%3        algebra 1   //is this true? //YES. I am accounting for the remainder.
 }"""
 
 --> and this one:
@@ -98,7 +108,7 @@ l"""{
 l"""{
     1. x % 2 == 0                   (some justification)
     2. div = x / 2                  (some justification)
-    3. 2*div == x                   algebra 1 2    //is this true?
+    3. 2*div == x                   algebra 1 2    //is this true? //YES. We've shown x is even.
 }"""
 
 
